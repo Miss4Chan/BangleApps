@@ -1,8 +1,5 @@
-{ "id": "prvtest",
+{
+  "id": "prvtest",
   "name": "My Prv Test App",
-  "shortName":"My Prv test",
-  "version":"0.01",
-  "description": "This is a description of my awesome test app",
-  "tags": "",
   "supports": ["BANGLEJS2"]
 }
