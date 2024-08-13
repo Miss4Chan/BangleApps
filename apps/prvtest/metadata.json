@@ -4,5 +4,6 @@
   "shortName": "prv",
   "icon": "8ball.png",
   "version": "0.01",
-  "description": "A very nice app"
+  "description": "A very nice app",
+  "supports": [ "BANGLEJS", "BANGLEJS2" ]
 }
