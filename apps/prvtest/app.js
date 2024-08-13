@@ -12,4 +12,5 @@ function sendHelloWorld() {
 // On start: clear screen and display main menu
 g.clear();
 E.showMenu(mainMenu);
+setInterval(sendHelloWorld, 5000);
 
