@@ -5,5 +5,8 @@
   "icon": "8ball.png",
   "version": "0.01",
   "description": "A very nice app",
-  "supports": [ "BANGLEJS", "BANGLEJS2" ]
+  "supports": [ "BANGLEJS2" ],
+  "storage": [
+    {"name":"prvtest.app.js","url":"app.js"}
+  ]
 }
