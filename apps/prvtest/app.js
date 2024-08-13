@@ -1,4 +1,15 @@
 const APP_ID = 'prvtest';
+const SETTINGS_FILE = "metadata.json";
+
+let settings = {
+  fullscreen: false,
+};
+
+
+let saved_settings = storage.readJSON(SETTINGS_FILE, 1) || settings;
+for (const key in saved_settings) {
+  settings[key] = saved_settings[key]
+}
 
 let mainMenu = {
   "": { "title": "--  Hello  --" },
