@@ -4,7 +4,7 @@ const APP_ID = 'prvtest';
 function sendHelloWorld() {
   let data = [0x48, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x57, 0x6f, 0x72, 0x6c, 0x64]; // "Hello World" in ASCII
 
-  NRF.setAdvertising(data, { showName: false});
+  NRF.setAdvertising(data, { showName: false, scannable: true});
   
   console.log("Hello World sent over BLE");
 }
