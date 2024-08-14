@@ -11,8 +11,8 @@ const APP_ID = 'prvtest';
 
 // Bluetooth.println(JSON.stringify({t:"info", msg:"Te molam da rabotish"}));
 // // On start: clear screen and display main menu
-// g.clear();
-// E.showMenu(mainMenu);
+g.clear();
+E.showMenu(mainMenu);
 // setInterval(sendHelloWorld, 5000);
 
 NRF.setServices({
