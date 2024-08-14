@@ -1,5 +1,7 @@
 const APP_ID = 'prvtest';
 
+NRF.wake()
+
 NRF.setServices({
   0xBCDE: {
     0xABCD: {
