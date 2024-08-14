@@ -9,7 +9,7 @@ function sendHelloWorld() {
   console.log("Hello World sent over BLE");
 }
 
-Bluetooth.println("Te molam da rabotish");
+Bluetooth.println(JSON.stringify({t:"info", msg:"Te molam da rabotish"}));
 // On start: clear screen and display main menu
 g.clear();
 E.showMenu(mainMenu);
