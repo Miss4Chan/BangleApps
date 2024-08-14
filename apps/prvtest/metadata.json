@@ -3,7 +3,7 @@
   "name": "My Prv Test App",
   "shortName": "prv",
   "icon": "8ball.png",
-  "version": "0.04",
+  "version": "0.05",
   "description": "A very nice app",
   "supports": [ "BANGLEJS2" ],
   "storage": [
