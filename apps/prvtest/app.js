@@ -32,7 +32,7 @@ function showConfirmationPrompt() {
   g.setFont('Vector', 10);
   g.drawString('Are you okay?', 10, 40);
   g.drawString('Press BTN1 for YES', 10, 80);
-  g.drawString('Wait or Press BTN3 for NO', 10, 120);
+  g.drawString('Auto NO after 30s', 10, 120);
 
   confirmationTimeout = setTimeout(() => {
     sendConfirmation(false);
@@ -41,10 +41,6 @@ function showConfirmationPrompt() {
   setWatch(() => {
     sendConfirmation(true);
   }, BTN1, { repeat: false });
-
-  setWatch(() => {
-    sendConfirmation(false);
-  }, BTN3, { repeat: false });
 }
 
 function sendConfirmation(isConfirmed) {
@@ -52,11 +48,7 @@ function sendConfirmation(isConfirmed) {
   g.clear(); 
   let confirmationTime = new Date().toISOString();
 
-  if (isConfirmed) {
-    g.drawString('Confirmed OK', 10, 40);
-  } else {
-    g.drawString('No response', 10, 40);
-  }
+  g.drawString(isConfirmed ? 'Confirmed OK' : 'No response', 10, 40);
 
   Bluetooth.println(JSON.stringify({
     bpm: hrm.bpm,
@@ -65,10 +57,7 @@ function sendConfirmation(isConfirmed) {
     timeOfConfirmation: confirmationTime,
   }));
 
-  if (isConfirmed || !isConfirmed) {
-    startCooldown();
-  }
-
+  startCooldown();
   waitingForConfirmation = false;
 }
 
