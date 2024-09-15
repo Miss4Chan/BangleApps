@@ -12,10 +12,12 @@ Bangle.on('HRM', function (newHrm) {
   isNewHrmData = true;
   hrmTimestamp = new Date().toISOString();
 
+  if(hrm.bpm < highBpmThreshold)
+  {
   g.clear();
   g.setFont('Vector', 20);
   g.drawString(`HR: ${hrm.bpm}`, 10, 40);
-  g.drawString(`Time: ${hrmTimestamp}`, 10, 80);
+  g.drawString(`Time: ${hrmTimestamp}`, 10, 80);}
 
   if (hrm.bpm > highBpmThreshold && !waitingForConfirmation) {
     waitingForConfirmation = true;
