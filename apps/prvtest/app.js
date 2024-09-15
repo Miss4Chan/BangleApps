@@ -1,9 +1,11 @@
 let isNewHrmData = false;
 let hrmTimestamp = null;
-let hrm = { bpm: 0, confidence: 0 };
+let hrm = { bpm: 0, confidence: 0 }; 
 let highBpmThreshold = 100; 
 let waitingForConfirmation = false;
 let confirmationTimeout;
+let cooldownActive = false; 
+let cooldownDuration = 60 * 1000; 
 
 Bangle.setHRMPower(true);
 
@@ -12,14 +14,14 @@ Bangle.on('HRM', function (newHrm) {
   isNewHrmData = true;
   hrmTimestamp = new Date().toISOString();
 
-  if(hrm.bpm < highBpmThreshold)
-  {
-  g.clear();
-  g.setFont('Vector', 20);
-  g.drawString(`HR: ${hrm.bpm}`, 10, 40);
-  g.drawString(`Time: ${hrmTimestamp}`, 10, 80);}
+  if (hrm.bpm < highBpmThreshold) {
+    g.clear();
+    g.setFont('Vector', 10);
+    g.drawString(`HR: ${hrm.bpm}`, 10, 40);
+    g.drawString(`Time: ${hrmTimestamp}`, 10, 80);
+  }
 
-  if (hrm.bpm > highBpmThreshold && !waitingForConfirmation) {
+  if (hrm.bpm > highBpmThreshold && !waitingForConfirmation && !cooldownActive) {
     waitingForConfirmation = true;
     showConfirmationPrompt();
   }
@@ -27,14 +29,14 @@ Bangle.on('HRM', function (newHrm) {
 
 function showConfirmationPrompt() {
   g.clear();
-  g.setFont('Vector', 20);
+  g.setFont('Vector', 10);
   g.drawString('Are you okay?', 10, 40);
   g.drawString('Press BTN1 for YES', 10, 80);
   g.drawString('Wait or Press BTN3 for NO', 10, 120);
 
   confirmationTimeout = setTimeout(() => {
     sendConfirmation(false);
-  }, 60 * 1000);
+  }, 30 * 1000); 
 
   setWatch(() => {
     sendConfirmation(true);
@@ -63,7 +65,18 @@ function sendConfirmation(isConfirmed) {
     timeOfConfirmation: confirmationTime,
   }));
 
+  if (isConfirmed || !isConfirmed) {
+    startCooldown();
+  }
+
   waitingForConfirmation = false;
+}
+
+function startCooldown() {
+  cooldownActive = true;
+  setTimeout(() => {
+    cooldownActive = false; 
+  }, cooldownDuration);
 }
 
 setInterval(() => {
