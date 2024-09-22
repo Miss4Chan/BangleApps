@@ -3,8 +3,8 @@
     "name": "Elderly care App",
     "shortName": "elderlycare",
     "icon": "8ball.png",
-    "version": "1.0v",
-    "description": "I hope this thing works",
+    "version": "0.8",
+    "description": "A very nice app",
     "supports": [ "BANGLEJS2" ],
     "storage": [
       {"name":"elderlycare.app.js","url":"app.js"}
