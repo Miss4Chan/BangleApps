@@ -46,9 +46,7 @@ Bangle.on('accel', function (accel) {
   
     let magnitude = Math.sqrt(accel.x * accel.x + accel.y * accel.y + accel.z * accel.z);
   
-   console.log(`X: ${accel.x}, Y: ${accel.y}, Z: ${accel.z}, Magnitude: ${magnitude}`);
     if (magnitude > fallThreshold && (accel.z < -1.4 || accel.y < -1.4 || accel.x < -1.4) && !cooldownActiveFall) {
-         console.log(`X: ${accel.x}, Y: ${accel.y}, Z: ${accel.z}, Magnitude: ${magnitude}`);
       lastFallTimestamp = new Date().toISOString(); 
       waitingForConfirmation = true;
       showConfirmationPrompt("fall");
